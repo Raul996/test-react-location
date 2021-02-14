@@ -18,9 +18,6 @@ import AddCategoryInput from './Inputs/AddCategoryInput';
 import EditCategoryInput from './Inputs/EditCategoryInput';
 import RemoveCategoryInput from './Inputs/RenoveCategoryInput';
 import ViewCategoryComponent from './Inputs/ViewCategoryComponent';
-import CategoryIcon from '@material-ui/icons/Category';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import { useHistory } from 'react-router-dom';
 import { ViewState } from '../common';
 import { Alert } from '@material-ui/lab';
 
@@ -58,7 +55,6 @@ export default function CategoryComponent(): ReactElement {
     const dispatch = useDispatch();
 
     const classes = useStyles();
-    const history = useHistory();
 
     function onAddCategory(category: string) {
         if (!category) {
@@ -197,42 +193,6 @@ export default function CategoryComponent(): ReactElement {
             )}
 
             {view()}
-
-            <AppBar
-                style={{
-                    top: 'auto',
-                    left: 'auto',
-                    right: '0',
-                    bottom: '0',
-                    position: 'absolute',
-                    textAlign: 'center',
-                }}
-            >
-                <div>
-                    <IconButton
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-                        color="inherit"
-                        onClick={() => {
-                            history.push('/category');
-                        }}
-                    >
-                        <CategoryIcon />
-                    </IconButton>
-                    <IconButton
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-                        color="inherit"
-                        onClick={() => {
-                            history.push('/location');
-                        }}
-                    >
-                        <LocationOnIcon />
-                    </IconButton>
-                </div>
-            </AppBar>
         </div>
     );
 }

@@ -3,7 +3,9 @@ import './App.css';
 import { BrowserRouter, Redirect, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
 import CategoryComponent from './UI/categoryComponent/CategoryComponent';
-import LocationComponent from './UI/locationComponent/LocationComponent';
+import LocationComponent from './UI/LocationComponent';
+
+import BottomBar from './UI/BottomBar';
 
 function App() {
     return (
@@ -20,6 +22,7 @@ function App() {
                         <LocationComponent />
                     </Route>
                 </Switch>
+                <BottomBar />
             </BrowserRouter>
         </div>
     );

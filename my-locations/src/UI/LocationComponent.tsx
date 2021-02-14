@@ -10,17 +10,14 @@ import {
 import { Add, Edit, Remove } from '@material-ui/icons';
 import AirPlay from '@material-ui/icons/Airplay';
 import React, { ReactElement, useState } from 'react';
-import { ViewState } from '../common';
-import { useHistory } from 'react-router-dom';
-import CategoryIcon from '@material-ui/icons/Category';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import ViewLocation from './Inputs/ViewLocation';
-import RemoveLocation from './Inputs/RemoveLocation';
-import EditLocation from './Inputs/EditLocation';
-import AddLocationInput from './Inputs/AddLocationInput';
+import { ViewState } from './common';
+import ViewLocation from './locationComponent/Inputs/ViewLocation';
+import RemoveLocation from './locationComponent/Inputs/RemoveLocation';
+import EditLocation from './locationComponent/Inputs/EditLocation';
+import AddLocationInput from './locationComponent/Inputs/AddLocationInput';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
-import { Location } from '../../reducer/locationReducer';
-import { addLocation, removeLocation } from '../../actions/locationActions';
+import { Location } from '../reducer/locationReducer';
+import { addLocation, removeLocation } from '../actions/locationActions';
 import { Alert } from '@material-ui/lab';
 
 enum LocationTitle {
@@ -55,7 +52,6 @@ export default function LocationComponent(): ReactElement {
     });
 
     const classes = useStyles();
-    const history = useHistory();
     const dispatch = useDispatch();
 
     function onAddLocation(location: Location): void {
@@ -229,42 +225,6 @@ export default function LocationComponent(): ReactElement {
             )}
 
             {view()}
-
-            <AppBar
-                style={{
-                    top: 'auto',
-                    left: 'auto',
-                    right: '0',
-                    bottom: '0',
-                    position: 'absolute',
-                    textAlign: 'center',
-                }}
-            >
-                <div>
-                    <IconButton
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-                        color="inherit"
-                        onClick={() => {
-                            history.push('/category');
-                        }}
-                    >
-                        <CategoryIcon />
-                    </IconButton>
-                    <IconButton
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-                        color="inherit"
-                        onClick={() => {
-                            history.push('/location');
-                        }}
-                    >
-                        <LocationOnIcon />
-                    </IconButton>
-                </div>
-            </AppBar>
         </div>
     );
 }
